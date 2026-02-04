@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Milvus data (if running locally)
+milvus_data/
+etcd_data/
+minio_data/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local

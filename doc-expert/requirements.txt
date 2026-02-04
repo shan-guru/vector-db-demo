@@ -1,0 +1,10 @@
+# Milvus Vector DB Application Dependencies
+# Python 3.9+ required
+
+# Milvus Python SDK
+pymilvus>=2.3.0
+
+# NumPy for vector operations
+numpy>=1.24.0
+
+# Additional dependencies will be added as we progress through the steps

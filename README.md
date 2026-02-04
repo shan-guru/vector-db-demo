@@ -62,12 +62,51 @@ Process large documents by chunking them and indexing in batches for efficient a
 
 ---
 
+## Design & Architecture Documentation
+
+### [Document Semantic Search System Design](docs/doc-search-analysis.md)
+
+Comprehensive design document covering:
+- Project overview and requirements for a RAG-style document search system
+- High-level architecture with Milvus and metadata storage
+- Data model design (collections per use-case)
+- Batch ingestion pipeline for large documents (hundreds of MB)
+- Retrieval and response generation strategies
+- Local demo setup and production considerations
+- Support for multiple isolated use cases with file path traceability
+
+### [Performance & Metadata Handling Guide](docs/doc-system-perf-data.md)
+
+Critical design aspects covering:
+- **Performance in complex & large-scale scenarios**
+  - Index types and trade-offs (HNSW, IVF_FLAT, IVF_SQ8_PQ)
+  - Query latency characteristics and scaling behavior
+  - Tuning parameters for optimal performance
+  - Real-world performance numbers for different vector scales
+- **Metadata handling for file references**
+  - Strategies for preserving original file paths
+  - Inline vs. separate metadata store approaches
+  - Implementation patterns for traceability
+  - Best practices for production systems
+
+---
+
 ## Project Structure (Initial)
 
 ```text
 .
-├── docker-compose.yml
 ├── README.md
+├── docker-setup/
+│   ├── docker-compose.yml
+│   ├── start.sh
+│   └── stop.sh
+├── doc-expert/
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── setup.sh
+│   ├── start.sh
+│   ├── stop.sh
+│   └── [application code for steps 2-7]
 ├── docs/
 │   ├── step-1-run-milvus-docker.md
 │   ├── step-2-python-environment-setup.md
@@ -75,12 +114,9 @@ Process large documents by chunking them and indexing in batches for efficient a
 │   ├── step-4-create-collection-insert-data.md
 │   ├── step-5-similarity-search.md
 │   ├── step-6-llm-integration.md
-│   └── step-7-batch-processing.md
-├── scripts/
-│   ├── connect_milvus.py
-│   ├── insert_data.py
-│   ├── search.py
-│   └── batch_indexing.py
+│   ├── step-7-batch-processing.md
+│   ├── doc-search-analysis.md
+│   └── doc-system-perf-data.md
 └── venv/
 ```
 
@@ -102,13 +138,16 @@ At that point, this repo becomes the **foundation** rather than a demo.
 
 ## Summary
 
-This README demonstrates:
+This repository provides:
 
 * ✅ Dockerized Milvus setup
 * ✅ Latest Python SDK usage
 * ✅ Vector indexing & similarity search
 * ✅ LLM-enhanced responses
 * ✅ Batch processing for large documents
+* ✅ Comprehensive design documentation for production systems
+* ✅ Performance optimization guides
+* ✅ Metadata handling strategies for file traceability
 
 ---
 
@@ -117,7 +156,6 @@ This README demonstrates:
 If you want, next we can:
 
 * Add **actual Python code examples**
-* Add **Docker Compose file**
 * Convert this into a **proper RAG project structure**
 * Or simplify it further for a PoC
 
